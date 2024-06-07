@@ -1,0 +1,60 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below if you use Go modules)
+vendor/
+
+# Go workspace file
+go.work
+
+# Log files
+*.log
+
+# IntelliJ IDEA project files
+.idea/
+
+# VSCode settings
+.vscode/
+
+# MacOS specific files
+.DS_Store
+
+# Build directory
+bin/
+
+# Go binaries
+/go/bin/
+
+# Environment files
+.env
+
+# Go test binaries
+*.test
+
+# Docker specific files
+docker-compose.override.yml
+.docker
+
+# Node.js specific files (if you are using Node.js for frontend)
+node_modules/
+
+# JetBrains specific files
+.idea/
+*.iml
+
+# Specific IDE files
+*.swp
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+
+# git hooks folder
+.githooks/
