@@ -8,5 +8,6 @@ type Recipe struct {
     Ingredients  []string           `json:"ingredients,omitempty" bson:"ingredients,omitempty"`
     Instructions string             `json:"instructions,omitempty" bson:"instructions,omitempty"`
     AuthorID     primitive.ObjectID `json:"author_id,omitempty" bson:"author_id,omitempty"`
+    AuthorName   string             `json:"author_name,omitempty" bson:"author_name,omitempty"`
     CreatedAt    int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }

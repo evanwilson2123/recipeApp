@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "./axiosInstance"; // Import the axios instance
 
 function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +17,9 @@ function Register() {
         password,
       });
       console.log(response.data); // Handle the response
+      if (response.status === 201) {
+        navigate("/login");
+      }
     } catch (error) {
       console.error("There was an error registering!", error);
     }

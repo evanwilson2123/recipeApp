@@ -16,6 +16,7 @@ import (
 
 func CreateRecipe(c *fiber.Ctx) error {
     collection := config.DB.Collection("recipes")
+	userCollection := config.DB.Collection("users")
 
     var recipe models.Recipe
 
@@ -30,7 +31,15 @@ func CreateRecipe(c *fiber.Ctx) error {
 		log.Printf("Error converting userID to ObjectId: %v\n", err)
 		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{"error":"internal server error"})
 	}
+	var user models.User
 
+	err = userCollection.FindOne(context.Background(), bson.M{"_id":authorId}).Decode(&user)
+	if err != nil {
+
+		return c.Status(http.StatusNotFound).JSON(fiber.Map{"error":"no user found by ID"})
+	}
+
+	recipe.AuthorName = user.Username
     recipe.ID = primitive.NewObjectID()
 	recipe.AuthorID = authorId
     recipe.CreatedAt = time.Now().Unix()
